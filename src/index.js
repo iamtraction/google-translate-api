@@ -1,8 +1,10 @@
 const querystring = require("querystring");
-const { request } = require("undici");
+const { request, EnvHttpProxyAgent, setGlobalDispatcher } = require("undici");
 
 const languages = require("./languages");
 const tokenGenerator = require("./tokenGenerator");
+
+setGlobalDispatcher(new EnvHttpProxyAgent());
 
 /**
  * @function translate
